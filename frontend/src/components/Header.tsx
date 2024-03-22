@@ -18,11 +18,9 @@ export function Header() {
       formData.append('csvFile', file);
       }
       setFileName("")
-      console.log(file)
-   return
 
     try {
-      const response = await axios.post('http://localhost:3000//api/files', formData, {
+      const response = await axios.post('http://localhost:3000/api/files', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
