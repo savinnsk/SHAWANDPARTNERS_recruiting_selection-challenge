@@ -16,3 +16,27 @@ input {
 img {
     margin: 5px;
 }
+
+
+.upload {
+    margin: 10px;
+    padding: 3px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+@media screen and (max-width: 600px) {
+    .header p {
+        display: none;
+    }
+
+    .header img {
+        width: 25;
+        height: 25;
+    }
+
+    input {
+        width: 35%;
+    }
+}

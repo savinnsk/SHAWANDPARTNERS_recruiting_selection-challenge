@@ -8,6 +8,7 @@ export function Header() {
       <header className={s.header}>
         <img src={logo} className="logo" alt="logo" width={50} height={50} /> <p>CSV MANAGER</p>
         <input type="text" placeholder="search"/>
+        <input className={s.upload} type="file"></input>
       </header>
     )
   }
