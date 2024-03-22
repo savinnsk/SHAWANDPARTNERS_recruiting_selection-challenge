@@ -6,7 +6,8 @@
     color: #fff;
 }
 
-input {
+
+.search {
     margin-left: 5%;
     padding: 5px;
     border-radius: 10px;
@@ -17,14 +18,31 @@ img {
     margin: 5px;
 }
 
+p{
+    margin: 3px;
+}
+
 
 .upload {
     margin: 10px;
-    padding: 3px;
     font-weight: bold;
+    border-radius: 10px;
     color: #333;
+    width: 10%;
+    
 }
 
+.sendButton {
+    background: #9dc86e;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+   background-color: #888;
+}
 
 @media screen and (max-width: 600px) {
     .header p {
@@ -38,5 +56,9 @@ img {
 
     input {
         width: 35%;
+    }
+
+    .upload {
+        width: 30%;
     }
 }
