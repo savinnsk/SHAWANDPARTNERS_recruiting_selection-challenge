@@ -1,9 +1,12 @@
 import {Router , Request , Response} from "express"
+import Multer from "multer"
+const upload = Multer({ dest: 'uploads/' })
+
 
 const routes = Router()
 
 
-routes.post("/files", (req : Request ,res : Response)=>{
+routes.post("/files", upload.single('csvFile'),(req : Request ,res : Response)=>{
     return res.status(200).json({message : "files"})
 })
 
