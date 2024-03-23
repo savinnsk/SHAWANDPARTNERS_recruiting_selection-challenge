@@ -1,4 +1,5 @@
 import { Header } from "./components/Header"
+import { StoreProvider } from "./providers/store-provider"
 
 
 
@@ -6,12 +7,9 @@ function App() {
 
 
   return (
-    <>
-    <Header/>
-      <p >
-        Hi
-      </p>
-    </>
+    <StoreProvider>
+      <Header/>
+    </StoreProvider>
   )
 }
 
