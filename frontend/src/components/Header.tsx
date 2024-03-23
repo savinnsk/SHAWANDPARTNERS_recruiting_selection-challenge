@@ -1,7 +1,7 @@
 import s from "./header.module.css"
 import logo from "../../public/logo.png"
-import axios from "axios";
 import { useState } from "react";
+import { sendFileService } from "../services/api";
 
 export function Header() {
 
@@ -20,12 +20,8 @@ export function Header() {
       setFileName("")
 
     try {
-      const response = await axios.post('http://localhost:3000/api/files', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      console.log('Resposta from backend:', response.data);
+      const response = await sendFileService(formData)
+      console.log('Resposta from backend:', response);
     } catch (error) {
       console.error('Erro CSV:', error);
 
@@ -38,7 +34,7 @@ export function Header() {
       <header className={s.header}>
         <img src={logo} className="logo" alt="logo" width={50} height={50} /> <p>CSV MANAGER</p>
 
-        <div>
+        <div className={s.headerContent}>
       
           <input className={s.search} type="text" placeholder="search"/>
 

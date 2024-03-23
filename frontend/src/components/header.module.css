@@ -14,6 +14,10 @@
     width: 25%;
 }
 
+.headerContent{
+    display: contents;
+}
+
 img {
     margin: 5px;
 }
@@ -28,7 +32,7 @@ p{
     font-weight: bold;
     border-radius: 10px;
     color: #333;
-    width: 10%;
+    width: 100px;
     
 }
 
