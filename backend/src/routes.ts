@@ -27,7 +27,7 @@ routes.get("/users", async (req: Request, res: Response) => {
       const csvFolder = "./uploads";
   
       const files = fs.readdirSync(csvFolder).filter(file => file.endsWith(".csv"));
-  
+
       for (const file of files) {
         const filePath = `${csvFolder}/${file}`;
         const fileData = await readCSVFile(filePath);
@@ -44,7 +44,7 @@ routes.get("/users", async (req: Request, res: Response) => {
       return res.status(200).json({ data: searchResults }); 
     } catch (error) {
       console.error("Error searching data:", error);
-      return res.status(500).json({ message: "An error occurred while searching data." });
+      return res.status(500).json({ message: "Can't find any data to match search." });
     }
   });
   

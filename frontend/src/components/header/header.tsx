@@ -32,8 +32,15 @@ export function Header() {
   };
 
   const handleSearchColumns = async (e: string)=> {
-    const columnValues = await searchColumnsService(e)
-    store?.setValueCsv(columnValues)
+
+      const columnValues = await searchColumnsService(e)
+      
+      if(columnValues.response.status > 399){
+        store?.toSetNotification(columnValues.response.data.message)
+        store?.toSetError()
+      }
+      store?.setValueCsv(columnValues)
+  
   }
 
 

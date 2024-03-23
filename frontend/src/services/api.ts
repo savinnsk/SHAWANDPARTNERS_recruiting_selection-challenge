@@ -21,11 +21,12 @@ export const searchColumnsService = async (column : string)=>{
         'Content-Type': 'application/json'
       }})
 
-      console.log(response.data)
 
-  return response.data
+
+  return response
 
 } catch(error : any){
-  return error.data
+  
+  return error
 }
 }

@@ -1,0 +1,51 @@
+.notificationContainer{
+    text-align: center;
+    left: 35%;
+    top: -100px;
+    padding: 10px;
+    width: 30%;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    font-weight: 700;
+    color: #fff;
+    background: #9dc86e;
+    transition: top 0.5s ease-in-out;
+}
+
+.notificationContainerError{
+    text-align: center;
+    left: 35%;
+    top: -100px;
+    padding: 10px;
+    width: 30%;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    font-weight: 700;
+    color: #fff;
+    background : #FA8072;
+    transition: top 0.5s ease-in-out;
+}
+
+.notificationContainer.show {
+    top: 15%; 
+  }
+  
+
+  .notificationContainer.error {
+    background: #FA8072
+  }
+
+  .slide-from-top {
+    animation: slideFromTop 0.5s ease-in-out forwards; 
+  }
+  
+  @keyframes slideFromTop {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }

@@ -30,13 +30,11 @@ interface ValueCsv {
       setTimeout(() => {
         setNotificationMessage(null);
       }, 3000);
+      setError(false);
     }, []);
 
     const toSetError = useCallback(() => {
       setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 3000);
     }, []);
 
     return (
