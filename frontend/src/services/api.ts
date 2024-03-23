@@ -13,3 +13,19 @@ export const sendFileService = async (formData : FormData)=>{
     return error.data
   }
 }
+
+export const searchColumnsService = async (column : string)=>{
+  try {
+    const response = await axios.get(`http://localhost:3000/api/users?q=${column}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }})
+
+      console.log(response.data)
+
+  return response.data
+
+} catch(error : any){
+  return error.data
+}
+}
