@@ -1,33 +1,24 @@
-import fs from 'fs';
-import csvParser from 'csv-parser'
-import { csvHandlerUseCase, readCSVFile } from './csv-usecase';
 
-jest.mock('fs')
-jest.mock('csv-parser'); 
+import { MatchResultByA } from '../mocks/mocks';
+import { csvHandlerUseCase } from './csv-usecase';
+
+
 
 
 describe('csvHandlerUseCase', () => {
-    let mockReaddirSync: jest.Mock;
-    let mockReadCSVFile: jest.Mock;
-    let mockCsvParser: jest.Mock;
 
-  beforeEach(() => {
-    mockReaddirSync = jest.fn();
-    (fs.readdirSync as jest.Mock) = mockReaddirSync;
 
-    mockReadCSVFile = jest.fn();
-    (readCSVFile as jest.Mock) = mockReadCSVFile;
+  it('should return values sending query "a" ', async () => {
+    const result = await csvHandlerUseCase("a");
 
-    mockCsvParser = jest.fn();
-    (csvParser as jest.Mock) = mockCsvParser;
+    expect(result).toEqual(MatchResultByA);
   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
 
-  it('should return empty array for no matching results', async () => {
-    expect(true).toBe(true);
+
+  it('should return empty array by query ")@(SD" ', async () => {
+    const result = await csvHandlerUseCase(")@(SD");
+    expect(result).toEqual([]);
   });
 
 
