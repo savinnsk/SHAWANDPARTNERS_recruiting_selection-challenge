@@ -2,7 +2,8 @@ import s from "./header.module.css"
 import useStore from "../../hook/store";
 import logo from "../../../public/logo.png"
 import { useState } from "react";
-import { searchColumnsService, sendFileService } from "../../services/api";
+import {  sendFileService } from "../../services/api";
+import { Search } from "../search/search";
 
 export function Header() {
 
@@ -34,17 +35,7 @@ export function Header() {
    
   };
 
-  const handleSearchColumns = async (e: string)=> {
 
-      const columnValues = await searchColumnsService(e)
-      
-      if(columnValues.response.status > 399){
-        store?.toSetNotification(columnValues.response.data.message)
-        store?.toSetError()
-      }
-      store?.setValueCsv(columnValues)
-  
-  }
 
 
     return (
@@ -53,7 +44,7 @@ export function Header() {
 
         <div className={s.headerContent}>
       
-          <input className={s.search} type="text" placeholder="search all columns here" onChange={async (e)=> await handleSearchColumns(e.target.value)}/>
+          <Search/>
 
           {fileName ? (
             <p>{fileName}</p>
