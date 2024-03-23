@@ -34,8 +34,8 @@ routes.get("/users", async (req: Request, res: Response) => {
   
         fileData.forEach((row: any) => {
           Object.entries(row).forEach(([columnName, value]) => {
-            if (columnName.toString().toLowerCase().includes(query)) {
-              searchResults.push({columnName , value, file: filePath});
+            if (value.toString().toLowerCase().includes(query)) {
+              searchResults.push({columnName , value, file: filePath ,other : row});
             }
           });
         });
