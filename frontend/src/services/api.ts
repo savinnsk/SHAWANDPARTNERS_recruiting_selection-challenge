@@ -7,10 +7,11 @@ export const sendFileService = async (formData : FormData)=>{
           'Content-Type': 'multipart/form-data'
         }})
 
-    return response.status
+
+    return response
 
   } catch(error : any){
-    return error.data
+    return error
   }
 }
 

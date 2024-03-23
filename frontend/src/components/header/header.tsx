@@ -22,13 +22,16 @@ export function Header() {
       }
       setFileName("")
 
-    try {
       const response = await sendFileService(formData)
-      console.log('Resposta from backend:', response);
-    } catch (error) {
-      console.error('Erro CSV:', error);
 
-    }
+      if(response.status > 399){
+        store?.toSetNotification(response.data.message)
+        store?.toSetError()
+        return
+      }
+
+      store?.toSetNotification(response.data.message)
+   
   };
 
   const handleSearchColumns = async (e: string)=> {
@@ -50,7 +53,7 @@ export function Header() {
 
         <div className={s.headerContent}>
       
-          <input className={s.search} type="text" placeholder="search" onChange={async (e)=> await handleSearchColumns(e.target.value)}/>
+          <input className={s.search} type="text" placeholder="search all columns here" onChange={async (e)=> await handleSearchColumns(e.target.value)}/>
 
           {fileName ? (
             <p>{fileName}</p>
