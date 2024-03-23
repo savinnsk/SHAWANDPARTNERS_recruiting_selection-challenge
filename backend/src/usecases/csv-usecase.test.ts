@@ -1,6 +1,6 @@
 
-import { MatchResultByA } from '../mocks/mocks';
-import { csvHandlerUseCase } from './csv-usecase';
+import { MatchResultByA, getAllDataFromCsvExample } from '../mocks/mocks';
+import { csvHandlerUseCase , readCSVFile } from './csv-usecase';
 
 
 
@@ -21,5 +21,17 @@ describe('csvHandlerUseCase', () => {
     expect(result).toEqual([]);
   });
 
+
+});
+
+
+
+describe('readCSVFile', () => {
+
+
+  it('should find values at file example', async () => {
+    const result = await readCSVFile("./uploads/1711199716550-file.csv");
+    expect(result).toEqual(getAllDataFromCsvExample);
+  });
 
 });
