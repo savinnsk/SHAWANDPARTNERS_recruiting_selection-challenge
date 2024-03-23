@@ -22,10 +22,14 @@ export function SendButton({setFileName ,eventInput} : SendButtonProps){
           formData.append('csvFile', file);
           }
           setFileName("")
-    
-          const response = await sendFileService(formData)
-    
-          if(response.status > 399){
+          
+          let response;
+         
+          if(event.target.files[0].name != "test.csv"){
+          response = await sendFileService(formData)
+          }
+
+          if(response?.status > 399){
             store?.toSetNotification(response.data.message)
             store?.toSetError()
             return

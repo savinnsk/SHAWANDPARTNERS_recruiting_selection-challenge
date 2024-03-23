@@ -21,8 +21,10 @@ describe("Send Button",()=>{
         console.log("FILE NAME AFTER CLICK =>: ",fileName)
 
         render(<SendButton setFileName={setFileNameMock} eventInput={eventInputMock} />);
-       
+        
+
         const sendButton = screen.getByText('SEND');
+
         fireEvent.click(sendButton);
         
         console.log("FILE NAME BEFORE CLICK =>: ",fileName)
