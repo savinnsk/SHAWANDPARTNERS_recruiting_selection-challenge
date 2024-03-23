@@ -1,4 +1,4 @@
-import { Header } from "./components/Header"
+import { Header } from "./components/Header/Header"
 import { StoreProvider } from "./providers/store-provider"
 
 

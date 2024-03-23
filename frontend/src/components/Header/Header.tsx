@@ -1,10 +1,13 @@
 import s from "./header.module.css"
+import useStore from "../../hook/store";
 import logo from "../../public/logo.png"
 import { useState } from "react";
-import { sendFileService } from "../services/api";
+import { searchColumnsService, sendFileService } from "../../services/api";
 
 export function Header() {
 
+  const store = useStore()
+  
 
   const [eventInput , setEventInput] = useState<React.ChangeEvent<HTMLInputElement>>()
   const [fileName , setFileName] = useState<string>("")
@@ -28,6 +31,10 @@ export function Header() {
     }
   };
 
+  const handleSearchColumns = async (e: string)=> {
+    const columnValues = await searchColumnsService(e)
+    store?.setValueCsv(columnValues)
+  }
 
 
     return (
@@ -36,7 +43,7 @@ export function Header() {
 
         <div className={s.headerContent}>
       
-          <input className={s.search} type="text" placeholder="search"/>
+          <input className={s.search} type="text" placeholder="search" onChange={async (e)=> await handleSearchColumns(e.target.value)}/>
 
           {fileName ? (
             <p>{fileName}</p>
