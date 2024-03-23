@@ -33,21 +33,21 @@ routes.get("/users", async (req: Request, res: Response) => {
         const fileData = await readCSVFile(filePath);
   
         fileData.forEach((row: any) => {
-          const value = row[query];
-          if (value) {
-            searchResults.push({value, file : filePath});
-          }
+          Object.entries(row).forEach(([columnName, value]) => {
+            if (columnName.toString().toLowerCase().includes(query)) {
+              searchResults.push({columnName , value, file: filePath});
+            }
+          });
         });
       }
   
-      return res.status(200).json({ data: searchResults });
+      return res.status(200).json({ data: searchResults }); 
     } catch (error) {
       console.error("Error searching data:", error);
       return res.status(500).json({ message: "An error occurred while searching data." });
     }
   });
   
-
   async function readCSVFile(filePath: string): Promise<any[]> {
     return new Promise((resolve, reject) => {
       const results: any[] = [];
