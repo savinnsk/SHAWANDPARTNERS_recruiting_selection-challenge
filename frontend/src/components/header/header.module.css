@@ -30,3 +30,15 @@ p{
 }
 
 
+
+
+@media screen and (max-width: 600px) {
+    .header p {
+        display: none;
+    }
+
+    .header img {
+        display: none;
+    }
+
+}

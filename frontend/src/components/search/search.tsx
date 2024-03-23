@@ -7,7 +7,10 @@ export function Search() {
 const store = useStore()
 
 const handleSearchColumns = async (e: string)=> {
-
+  if (e.trim() === "") {
+    store?.setValueCsv([])
+    return
+  }
     const columnValues = await searchColumnsService(e)
     
     if(columnValues?.response?.status > 399){
@@ -16,20 +19,19 @@ const handleSearchColumns = async (e: string)=> {
       return
     }
 
-    if(columnValues?.data?.data?.length == 0){
-      store?.toSetNotification("No columns find")
-      store?.toSetError()
-      return
-    }
 
-    store?.setValueCsv(columnValues?.data?.data)
+if(columnValues?.data?.data.length == 0){
+      store?.toSetNotification("no results")
+      store?.toSetError()
+}
+   store?.setValueCsv(columnValues?.data?.data)
 
 }
 
 
   return (
 
-       <input className={s.search} type="text" placeholder="search all columns here" onChange={async (e)=> await handleSearchColumns(e.target.value)}/>
+       <input className={s.search} type="text" placeholder="search value here" onChange={async (e)=> await handleSearchColumns(e.target.value)}/>
    
   )
 }
