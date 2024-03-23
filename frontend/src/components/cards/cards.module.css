@@ -1,0 +1,30 @@
+.cardsContainer{
+   grid-template-columns: 1fr 1fr;
+   gap: 1px;
+   display: inline-grid;
+   margin: 10px;
+   color: #fff;
+   font-weight: 600;
+}
+
+.card{
+    margin : 10px;
+    background: #333;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+span{
+    margin: 2px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .cardsContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
