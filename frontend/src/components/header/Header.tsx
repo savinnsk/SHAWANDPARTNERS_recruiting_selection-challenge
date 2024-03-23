@@ -1,6 +1,6 @@
 import s from "./header.module.css"
 import useStore from "../../hook/store";
-import logo from "../../public/logo.png"
+import logo from "../../../public/logo.png"
 import { useState } from "react";
 import { searchColumnsService, sendFileService } from "../../services/api";
 
