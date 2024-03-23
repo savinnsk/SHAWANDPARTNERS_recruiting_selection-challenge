@@ -4,7 +4,8 @@
 interface ValueCsv {
   columnName : string;
   value : string;
-  file : string
+  file : string;
+  other : any
 }
 
   interface StoreContextType {
