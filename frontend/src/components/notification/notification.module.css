@@ -28,15 +28,6 @@
     transition: top 0.5s ease-in-out;
 }
 
-.notificationContainer.show {
-    top: 15%; 
-  }
-  
-
-  .notificationContainer.error {
-    background: #FA8072
-  }
-
   .slide-from-top {
     animation: slideFromTop 0.5s ease-in-out forwards; 
   }

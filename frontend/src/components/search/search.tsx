@@ -10,11 +10,19 @@ const handleSearchColumns = async (e: string)=> {
 
     const columnValues = await searchColumnsService(e)
     
-    if(columnValues.response.status > 399){
+    if(columnValues?.response?.status > 399){
       store?.toSetNotification(columnValues.response.data.message)
       store?.toSetError()
+      return
     }
-    store?.setValueCsv(columnValues)
+
+    if(columnValues?.data?.data?.length == 0){
+      store?.toSetNotification("No columns find")
+      store?.toSetError()
+      return
+    }
+
+    store?.setValueCsv(columnValues?.data?.data)
 
 }
 
