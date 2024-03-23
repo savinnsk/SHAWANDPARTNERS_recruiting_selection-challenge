@@ -1,18 +1,47 @@
-import  { createContext,  useState } from 'react';
+  import  { createContext,  useCallback,  useState } from 'react';
 
 
-export const StoreContext = createContext({});
+interface ValueCsv {
+  columnName : string;
+  value : string;
+  file : string
+}
+
+  interface StoreContextType {
+    valuesCsv: ValueCsv[]; 
+    setValueCsv: React.Dispatch<React.SetStateAction<ValueCsv[]>>; 
+    error: boolean; 
+    toSetError: any;
+    notificationMessage: string | null; 
+    toSetNotification: any; 
+  }
+
+  export const StoreContext = createContext<StoreContextType | undefined>(undefined);
 
 
-export const StoreProvider = ({ children } : { children : React.ReactNode}) => {
+  export const StoreProvider = ({ children } : { children : React.ReactNode}) => {
 
-  const [valuesCsv, setValueCsv] = useState({});
-  const [error, setError] = useState(false);
-  
+    const [valuesCsv, setValueCsv] = useState<ValueCsv[]>([]);
+    const [error, setError] = useState(false);
+    const [notificationMessage, setNotificationMessage] = useState<string | null>("");
+    
+    const toSetNotification = useCallback((message: string) => {
+      setNotificationMessage(message);
+      setTimeout(() => {
+        setNotificationMessage(null);
+      }, 3000);
+    }, []);
 
-  return (
-    <StoreContext.Provider value={{ valuesCsv, setValueCsv , error , setError }}>
-      {children}
-    </StoreContext.Provider>
-  );
-};
+    const toSetError = useCallback(() => {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    }, []);
+
+    return (
+      <StoreContext.Provider value={{ valuesCsv, setValueCsv , error , toSetError , notificationMessage , toSetNotification }}>
+        {children}
+      </StoreContext.Provider>
+    );
+  };
