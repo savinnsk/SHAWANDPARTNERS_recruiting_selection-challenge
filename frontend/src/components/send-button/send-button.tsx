@@ -23,6 +23,13 @@ export function SendButton({setFileName ,eventInput} : SendButtonProps){
           }
           setFileName("")
           
+          if (!file.name.endsWith('.csv')) {
+            store?.toSetNotification("file is not csv")
+            store?.toSetError()
+            return
+        }
+
+
           let response;
          
           if(event.target.files[0].name != "test.csv"){
